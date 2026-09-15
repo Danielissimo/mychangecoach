@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Change Coach | Transformation • Leadership • Creativity</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-neutral-50 text-neutral-800 font-sans antialiased selection:bg-neutral-200">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-neutral-200 z-50">
+    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      
+      <!-- Delta Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-lg bg-neutral-900 text-white flex items-center justify-center font-serif text-xl font-light tracking-widest transition-transform group-hover:scale-105">
+          Δ
+        </div>
+        <div class="flex flex-col">
+          <span class="font-semibold text-lg tracking-tight text-neutral-900 leading-none">MY CHANGE COACH</span>
+          <span class="text-[10px] tracking-widest text-neutral-500 uppercase mt-1">Transformation • Leadership • Creativity</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-600">
+        <a href="#about" class="hover:text-neutral-900 transition-colors">About</a>
+        <a href="#services" class="hover:text-neutral-900 transition-colors">Services</a>
+        <a href="#simulation" class="hover:text-neutral-900 transition-colors">Simulation</a>
+        <a href="#creative" class="hover:text-neutral-900 transition-colors">Creativity</a>
+        <div class="flex items-center gap-2 px-5 py-2.5 bg-neutral-900 text-white rounded-full">
+          <a href="mailto:daniele@mychangecoach.com" class="hover:underline">daniele@mychangecoach.com</a>
+          <button onclick="copyEmail(this)" title="Copy email" class="opacity-70 hover:opacity-100 transition-opacity cursor-pointer">
+            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-36 pb-20 px-6 max-w-6xl mx-auto">
+    <div class="max-w-3xl">
+      <span class="text-xs font-semibold tracking-widest uppercase text-neutral-500 mb-4 block">
+        Executive Coaching & Organizational Transformation
+      </span>
+      <h1 class="text-4xl md:text-6xl font-light tracking-tight text-neutral-900 mb-8 leading-snug">
+        Navigating Human & Organizational Change
+      </h1>
+      <p class="text-lg md:text-xl text-neutral-600 leading-relaxed mb-6 font-light">
+        Guiding leaders and organizations through complex transitions using experiential change management frameworks, executive coaching, and emotional intelligence.
+      </p>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 bg-white border-y border-neutral-200">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-12 gap-12 items-center">
+        <div class="md:col-span-7">
+          <h2 class="text-xs font-semibold tracking-widest uppercase text-neutral-500 mb-3">About Daniele dell'Erba</h2>
+          <h3 class="text-2xl font-light text-neutral-900 mb-6">Delivering change and empowering transformation since 1998.</h3>
+          <p class="text-neutral-600 leading-relaxed mb-4 font-light">
+            Daniele dell'Erba is an international coach, change management consultant, author, and trainer. Starting his career in the London office of Accenture, he established his practice to help leaders and international organizations navigate complex behavioral, cultural, and strategic shifts.
+          </p>
+          <p class="text-neutral-600 leading-relaxed font-light mb-6">
+            He holds a Master's degree in Organizational Psychology from the London School of Economics (LSE) and was awarded the European Union Marie Curie Fellowship for Doctoral research in Change Management across Rome, Lisbon, and London. He works with a wide variety of corporate clients and industries across Europe and beyond.
+          </p>
+        </div>
+
+        <div class="md:col-span-5 bg-neutral-50 p-8 rounded-2xl border border-neutral-200">
+          <h4 class="text-xs font-semibold tracking-widest uppercase text-neutral-500 mb-6">Academic & Institutional Affiliations</h4>
+          <ul class="space-y-4 text-sm font-medium text-neutral-800">
+            <li class="flex items-center gap-3 pb-3 border-b border-neutral-200">
+              <span class="w-2 h-2 rounded-full bg-neutral-900"></span> Lecturer at Católica Lisbon School of Business & Economics
+            </li>
+            <li class="flex items-center gap-3 pb-3 border-b border-neutral-200">
+              <span class="w-2 h-2 rounded-full bg-neutral-900"></span> Lecturer at ISEG – Instituto Superior de Economia e Gestão
+            </li>
+            <li class="flex items-center gap-3 pb-3 border-b border-neutral-200">
+              <span class="w-2 h-2 rounded-full bg-neutral-900"></span> M.Sc. London School of Economics (LSE)
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="w-2 h-2 rounded-full bg-neutral-900"></span> Doctoral Fellow, University of Rome
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-20 bg-white border-b border-neutral-200">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs font-semibold tracking-widest uppercase text-neutral-500 mb-3 block">Core Offerings</span>
+        <h2 class="text-3xl font-light text-neutral-900">Services & Solutions</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        
+        <!-- For Organizations -->
+        <div class="border border-neutral-200 rounded-2xl p-8 hover:border-neutral-400 transition-colors flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-neutral-100 flex items-center justify-center mb-6 text-neutral-900">
+              <i data-lucide="building-2" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-medium text-neutral-900 mb-3">For Organizations</h3>
+            <p class="text-neutral-600 font-light leading-relaxed mb-6">
+              Interactive Change Management Workshops built around real-world simulation models.
+            </p>
+            <div class="bg-neutral-50 p-5 rounded-xl border border-neutral-200 mb-6">
+              <span class="text-xs font-semibold uppercase tracking-wider text-neutral-500 block mb-3">Core Capabilities:</span>
+              <ul class="text-xs text-neutral-800 space-y-2 font-medium">
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-neutral-900"></span> Change Management</li>
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-neutral-900"></span> Workshop & Simulation-Based Training</li>
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-neutral-900"></span> Consulting & Strategy</li>
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-neutral-900"></span> Advisory</li>
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-neutral-900"></span> Executive Coaching</li>
+              </ul>
+            </div>
+          </div>
+          <a href="#simulation" class="inline-flex items-center justify-center px-5 py-3 bg-neutral-100 text-neutral-900 border border-neutral-200 rounded-full font-medium text-xs hover:bg-neutral-200 transition-colors w-full text-center">
+            Explore ADVASIS Simulation &rarr;
+          </a>
+        </div>
+
+        <!-- For Individuals -->
+        <div class="border border-neutral-200 rounded-2xl p-8 hover:border-neutral-400 transition-colors flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-neutral-100 flex items-center justify-center mb-6 text-neutral-900">
+              <i data-lucide="user-check" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-medium text-neutral-900 mb-3">For Individuals</h3>
+            <p class="text-neutral-600 font-light leading-relaxed mb-6">
+              Personalized 1:1 Executive Coaching tailored for leaders, expatriates, and professionals navigating critical career or organizational transitions.
+            </p>
+            <div class="bg-neutral-50 p-5 rounded-xl border border-neutral-200 mb-6">
+              <span class="text-xs font-semibold uppercase tracking-wider text-neutral-500 block mb-3">Focus Areas:</span>
+              <ul class="text-xs text-neutral-800 space-y-2 font-medium">
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-neutral-900"></span> Leadership & Emotional Intelligence</li>
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-neutral-900"></span> Transition & Career Coaching</li>
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-neutral-900"></span> Mindful Presence & Decision-Making</li>
+              </ul>
+            </div>
+          </div>
+          <a href="/personal-motivation" class="inline-flex items-center justify-center px-5 py-3 bg-neutral-100 text-neutral-900 border border-neutral-200 rounded-full font-medium text-xs hover:bg-neutral-200 transition-colors w-full text-center">
+            Explore Personal Motivation & Career Pathfinder &rarr;
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ADVASIS Change Simulation Section -->
+  <section id="simulation" class="py-24 max-w-6xl mx-auto px-6">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="text-xs font-semibold tracking-widest uppercase text-neutral-500 mb-3 block">Proprietary Workshop Tool</span>
+      <h2 class="text-3xl font-light text-neutral-900 mb-4">The ADVASIS Change Management Simulation</h2>
+      <p class="text-neutral-600 font-light">
+        An interactive experiential platform designed for corporate workshops. Participants lead complex organizational transitions, managing stakeholder attitudes, action points, and strategic decisions in real time.
+      </p>
+    </div>
+
+    <!-- Interactive Visual Showcase -->
+    <div class="grid md:grid-cols-3 gap-8">
+      
+      <div class="bg-white p-4 rounded-2xl border border-neutral-200 shadow-sm">
+        <div class="bg-neutral-100 rounded-xl overflow-hidden mb-4 border border-neutral-200 min-h-[200px] flex items-center justify-center">
+          <img id="sim-img-1" src="images/SIM_welcome_page.jpg" alt="Simulation Welcome Briefing" class="w-full h-auto object-cover" />
+        </div>
+        <h3 class="text-base font-medium text-neutral-900 mb-1">Welcome & Strategic Briefing</h3>
+        <p class="text-xs text-neutral-500 font-light">Setting initial parameters, stakeholder mapping, and change objectives.</p>
+      </div>
+
+      <div class="bg-white p-4 rounded-2xl border border-neutral-200 shadow-sm">
+        <div class="bg-neutral-100 rounded-xl overflow-hidden mb-4 border border-neutral-200 min-h-[200px] flex items-center justify-center">
+          <img id="sim-img-2" src="images/action_1.jpg" alt="Simulation Decision Interface" class="w-full h-auto object-cover" />
+        </div>
+        <h3 class="text-base font-medium text-neutral-900 mb-1">Action & Decision Engine</h3>
+        <p class="text-xs text-neutral-500 font-light">Selecting strategic interventions and conducting interviews per round.</p>
+      </div>
+
+      <div class="bg-white p-4 rounded-2xl border border-neutral-200 shadow-sm">
+        <div class="bg-neutral-100 rounded-xl overflow-hidden mb-4 border border-neutral-200 min-h-[200px] flex items-center justify-center">
+          <img id="sim-img-3" src="images/action_history.jpg" alt="Simulation Action History" class="w-full h-auto object-cover" />
+        </div>
+        <h3 class="text-base font-medium text-neutral-900 mb-1">Action History & Dynamics</h3>
+        <p class="text-xs text-neutral-500 font-light">Tracking organizational impact, stakeholder support, and turn-by-turn evolution.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Creative Section -->
+  <section id="creative" class="py-24 max-w-6xl mx-auto px-6 border-t border-neutral-200">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="text-xs font-semibold tracking-widest uppercase text-neutral-500 mb-3 block">Creative Dimensions</span>
+      <h2 class="text-3xl font-light text-neutral-900">Creativity Through Music & Spoken Word</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12 items-stretch">
+      <!-- TEDx Card -->
+      <div class="border border-neutral-200 p-8 rounded-2xl bg-white flex flex-col justify-between">
+        <div>
+          <span class="text-[10px] font-semibold tracking-widest uppercase text-neutral-500 mb-3 block">TEDx Talk</span>
+          <h3 class="text-2xl font-light text-neutral-900 mb-4">"Let Jamming Change Your Life"</h3>
+          <p class="text-neutral-600 font-light text-sm leading-relaxed mb-8">
+            An innovative presentation combining musical performance and change theory. By deconstructing a live jam session, this talk reveals how musical improvisation, active listening, and real-time presence make the mechanics of collaboration, agility, and change management explicit and accessible.
+          </p>
+        </div>
+        <a href="https://youtu.be/LfWvCeD6XCg?si=myT_MYeGENJRYdA3" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 text-sm font-medium text-neutral-900 hover:underline">
+          <i data-lucide="play" class="w-4 h-4"></i> Watch the TEDx Performance Video
+        </a>
+      </div>
+
+      <!-- Art Card -->
+      <div class="border border-neutral-200 p-8 rounded-2xl bg-white flex flex-col justify-between">
+        <div>
+          <span class="text-[10px] font-semibold tracking-widest uppercase text-neutral-500 mb-3 block">Artistic Foundation</span>
+          <h3 class="text-2xl font-light text-neutral-900 mb-4">Insights For Your Consideration</h3>
+          <p class="text-neutral-600 font-light text-sm leading-relaxed mb-8">
+            A curated space exploring aesthetic philosophy, calligraphic single-stroke circles (Ensō), and reflections on presence, mindfulness, and creative expression.
+          </p>
+        </div>
+        <a href="https://insightsforyourconsideration.art" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 text-sm font-medium text-neutral-900 hover:underline">
+          Visit insightsforyourconsideration.art <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer / Contact -->
+  <footer class="bg-white border-t border-neutral-200 py-16 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+      <div>
+        <span class="font-semibold text-lg text-neutral-900 block">MY CHANGE COACH</span>
+        <span class="text-xs text-neutral-500 font-light">Based in Portugal • Working Globally</span>
+      </div>
+
+      <div class="flex items-center gap-6 text-sm font-medium">
+        <div class="flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white rounded-full">
+          <a href="mailto:daniele@mychangecoach.com" class="hover:underline">daniele@mychangecoach.com</a>
+          <button onclick="copyEmail(this)" title="Copy email" class="opacity-70 hover:opacity-100 transition-opacity cursor-pointer">
+            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    function copyEmail(button) {
+      const email = "daniele@mychangecoach.com";
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(email);
+      }
+      const originalHTML = button.innerHTML;
+      button.innerHTML = "Copied!";
+      setTimeout(() => {
+        button.innerHTML = originalHTML;
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
