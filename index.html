@@ -36,12 +36,9 @@
         <a href="#services" class="hover:text-neutral-900 transition-colors">Services</a>
         <a href="#simulation" class="hover:text-neutral-900 transition-colors">Simulation</a>
         <a href="#creative" class="hover:text-neutral-900 transition-colors">Creativity</a>
-        <div class="flex items-center gap-2 px-5 py-2.5 bg-neutral-900 text-white rounded-full">
-          <a href="mailto:daniele@mychangecoach.com" class="hover:underline">daniele@mychangecoach.com</a>
-          <button onclick="copyEmail(this)" title="Copy email" class="opacity-70 hover:opacity-100 transition-opacity cursor-pointer">
-            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-          </button>
-        </div>
+        <button onclick="openContactModal()" class="px-5 py-2.5 bg-neutral-900 text-white rounded-full hover:bg-neutral-800 transition-all cursor-pointer">
+          Get in Touch
+        </button>
       </div>
     </div>
   </nav>
@@ -176,7 +173,7 @@
       
       <div class="bg-white p-4 rounded-2xl border border-neutral-200 shadow-sm">
         <div class="bg-neutral-100 rounded-xl overflow-hidden mb-4 border border-neutral-200 min-h-[200px] flex items-center justify-center">
-          <img id="sim-img-1" src="SIM_welcome_page.jpg" alt="Simulation Welcome Briefing" class="w-full h-auto object-cover" />
+          <img id="sim-img-1" src="SIM%20welcome%20page.jpg" alt="Simulation Welcome Briefing" class="w-full h-auto object-cover" />
         </div>
         <h3 class="text-base font-medium text-neutral-900 mb-1">Welcome & Strategic Briefing</h3>
         <p class="text-xs text-neutral-500 font-light">Setting initial parameters, stakeholder mapping, and change objectives.</p>
@@ -184,7 +181,7 @@
 
       <div class="bg-white p-4 rounded-2xl border border-neutral-200 shadow-sm">
         <div class="bg-neutral-100 rounded-xl overflow-hidden mb-4 border border-neutral-200 min-h-[200px] flex items-center justify-center">
-          <img id="sim-img-2" src="action_1.jpg" alt="Simulation Decision Interface" class="w-full h-auto object-cover" />
+          <img id="sim-img-2" src="action%201.jpg" alt="Simulation Decision Interface" class="w-full h-auto object-cover" />
         </div>
         <h3 class="text-base font-medium text-neutral-900 mb-1">Action & Decision Engine</h3>
         <p class="text-xs text-neutral-500 font-light">Selecting strategic interventions and conducting interviews per round.</p>
@@ -192,7 +189,7 @@
 
       <div class="bg-white p-4 rounded-2xl border border-neutral-200 shadow-sm">
         <div class="bg-neutral-100 rounded-xl overflow-hidden mb-4 border border-neutral-200 min-h-[200px] flex items-center justify-center">
-          <img id="sim-img-3" src="action_history.jpg" alt="Simulation Action History" class="w-full h-auto object-cover" />
+          <img id="sim-img-3" src="action%20history.jpg" alt="Simulation Action History" class="w-full h-auto object-cover" />
         </div>
         <h3 class="text-base font-medium text-neutral-900 mb-1">Action History & Dynamics</h3>
         <p class="text-xs text-neutral-500 font-light">Tracking organizational impact, stakeholder support, and turn-by-turn evolution.</p>
@@ -248,12 +245,9 @@
       </div>
 
       <div class="flex items-center gap-6 text-sm font-medium">
-        <div class="flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white rounded-full">
-          <a href="mailto:daniele@mychangecoach.com" class="hover:underline">daniele@mychangecoach.com</a>
-          <button onclick="copyEmail(this)" title="Copy email" class="opacity-70 hover:opacity-100 transition-opacity cursor-pointer">
-            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-          </button>
-        </div>
+        <button onclick="openContactModal()" class="px-6 py-3 bg-neutral-900 text-white rounded-full hover:bg-neutral-800 transition-all cursor-pointer">
+          Get in Touch
+        </button>
       </div>
     </div>
   </footer>
@@ -261,17 +255,57 @@
   <script>
     lucide.createIcons();
 
-    function copyEmail(button) {
-      const email = "daniele@mychangecoach.com";
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(email);
-      }
-      const originalHTML = button.innerHTML;
-      button.innerHTML = "Copied!";
-      setTimeout(() => {
-        button.innerHTML = originalHTML;
-      }, 2000);
+    const MY_EMAIL = "daniele@mychangecoach.com";
+
+    function openContactModal() {
+      document.getElementById('contact-modal').classList.remove('hidden');
+      document.getElementById('contact-modal').classList.add('flex');
     }
-  </script>
+
+    function closeContactModal() {
+      document.getElementById('contact-modal').classList.add('hidden');
+      document.getElementById('contact-modal').classList.remove('flex');
+    }
+
+    function composeContactEmail() {
+      const visitorEmail = document.getElementById('visitor-email').value.trim();
+      let mailto = "mailto:" + MY_EMAIL + "?subject=" + encodeURIComponent("Get in touch via mychangecoach.com");
+      if (visitorEmail) {
+        mailto += "&cc=" + encodeURIComponent(visitorEmail);
+      }
+      window.location.href = mailto;
+      closeContactModal();
+    }
+
+    function copyMyEmail(button) {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(MY_EMAIL);
+      }
+      const original = button.innerText;
+      button.innerText = "Copied: " + MY_EMAIL;
+      setTimeout(() => { button.innerText = original; }, 3000);
+    }
+  </script>  <!-- Contact Modal -->
+  <div id="contact-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+    <div onclick="closeContactModal()" class="absolute inset-0 bg-neutral-900/50"></div>
+    <div class="relative bg-white rounded-2xl shadow-xl max-w-sm w-full p-8">
+      <button onclick="closeContactModal()" class="absolute top-4 right-4 text-neutral-400 hover:text-neutral-700">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <h3 class="text-lg font-semibold text-neutral-900 mb-1">Get in Touch</h3>
+      <p class="text-sm text-neutral-500 mb-5">Pop in your email and I'll open a message for you — you'll get a copy too.</p>
+      <input id="visitor-email" type="email" placeholder="your@email.com"
+        class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-sm mb-3 focus:outline-none focus:ring-2 focus:ring-neutral-900" />
+      <button onclick="composeContactEmail()" class="w-full py-2.5 bg-neutral-900 text-white rounded-lg text-sm font-medium hover:bg-neutral-800 transition-colors mb-3">
+        Open Message
+      </button>
+      <div class="text-center">
+        <button onclick="copyMyEmail(this)" class="text-xs text-neutral-500 hover:text-neutral-800 underline">
+          Or just copy my email address
+        </button>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
