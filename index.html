@@ -21,8 +21,8 @@
       
       <!-- Delta Logo -->
       <a href="#" class="flex items-center gap-3 group">
-        <div class="w-9 h-9 rounded-lg bg-neutral-900 text-white flex items-center justify-center font-serif text-xl font-light tracking-widest transition-transform group-hover:scale-105">
-          Δ
+        <div class="w-9 h-9 rounded-lg bg-neutral-900 flex items-center justify-center p-1.5 transition-transform group-hover:scale-105">
+          <img src="Delta_Enzo_logo.png" alt="Delta Enzo logo" class="w-full h-full object-contain" />
         </div>
         <div class="flex flex-col">
           <span class="font-semibold text-lg tracking-tight text-neutral-900 leading-none">MY CHANGE COACH</span>
@@ -74,21 +74,50 @@
         </div>
 
         <div class="md:col-span-5 bg-neutral-50 p-8 rounded-2xl border border-neutral-200">
-          <h4 class="text-xs font-semibold tracking-widest uppercase text-neutral-500 mb-6">Academic & Institutional Affiliations</h4>
-          <ul class="space-y-4 text-sm font-medium text-neutral-800">
+          <div class="flex gap-2 mb-6 border-b border-neutral-200">
+            <button onclick="showAboutTab('affiliations', this)" class="about-tab-btn text-xs font-semibold tracking-widest uppercase pb-3 border-b-2 border-neutral-900 text-neutral-900">
+              Academic & Institutional Affiliations
+            </button>
+            <button onclick="showAboutTab('clients', this)" class="about-tab-btn text-xs font-semibold tracking-widest uppercase pb-3 border-b-2 border-transparent text-neutral-400 hover:text-neutral-600">
+              Clients
+            </button>
+          </div>
+
+          <ul id="about-tab-affiliations" class="about-tab-panel space-y-4 text-sm font-medium text-neutral-800">
             <li class="flex items-center gap-3 pb-3 border-b border-neutral-200">
-              <span class="w-2 h-2 rounded-full bg-neutral-900"></span> Lecturer at Católica Lisbon School of Business & Economics
+              <span class="w-2 h-2 rounded-full bg-neutral-900 flex-shrink-0"></span> Lecturer at Católica Lisbon School of Business & Economics
             </li>
             <li class="flex items-center gap-3 pb-3 border-b border-neutral-200">
-              <span class="w-2 h-2 rounded-full bg-neutral-900"></span> Lecturer at ISEG – Instituto Superior de Economia e Gestão
+              <span class="w-2 h-2 rounded-full bg-neutral-900 flex-shrink-0"></span> Lecturer at ISEG – Instituto Superior de Economia e Gestão
             </li>
             <li class="flex items-center gap-3 pb-3 border-b border-neutral-200">
-              <span class="w-2 h-2 rounded-full bg-neutral-900"></span> M.Sc. London School of Economics (LSE)
+              <span class="w-2 h-2 rounded-full bg-neutral-900 flex-shrink-0"></span> Lecturer at ISCTE Business School / INDEG-ISCTE Executive Education
+            </li>
+            <li class="flex items-center gap-3 pb-3 border-b border-neutral-200">
+              <span class="w-2 h-2 rounded-full bg-neutral-900 flex-shrink-0"></span> M.Sc. Organisational Psychology with Management, London School of Economics (LSE)
             </li>
             <li class="flex items-center gap-3">
-              <span class="w-2 h-2 rounded-full bg-neutral-900"></span> Doctoral Fellow, University of Rome
+              <span class="w-2 h-2 rounded-full bg-neutral-900 flex-shrink-0"></span> Marie Curie Doctoral Fellow, University of Rome La Sapienza
             </li>
           </ul>
+
+          <div id="about-tab-clients" class="about-tab-panel hidden">
+            <div class="grid grid-cols-2 gap-x-4 gap-y-4 text-sm font-medium text-neutral-700">
+              <div class="pb-2 border-b border-neutral-200">Novartis</div>
+              <div class="pb-2 border-b border-neutral-200">Salesforce</div>
+              <div class="pb-2 border-b border-neutral-200">AstraZeneca</div>
+              <div class="pb-2 border-b border-neutral-200">Axa</div>
+              <div class="pb-2 border-b border-neutral-200">ENEL</div>
+              <div class="pb-2 border-b border-neutral-200">Electrolux</div>
+              <div class="pb-2 border-b border-neutral-200">TNT</div>
+              <div class="pb-2 border-b border-neutral-200">McDonald's</div>
+              <div class="pb-2 border-b border-neutral-200">Portugal Telecom</div>
+              <div class="pb-2 border-b border-neutral-200">Vodafone</div>
+              <div class="pb-2 border-b border-neutral-200">AkzoNobel</div>
+              <div class="pb-2 border-b border-neutral-200">ICI Dulux</div>
+              <div class="pb-2 col-span-2">Portuguese Catholic University / The Lisbon MBA</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -254,6 +283,17 @@
 
   <script>
     lucide.createIcons();
+
+    function showAboutTab(name, button) {
+      document.querySelectorAll('.about-tab-panel').forEach(p => p.classList.add('hidden'));
+      document.getElementById('about-tab-' + name).classList.remove('hidden');
+      document.querySelectorAll('.about-tab-btn').forEach(b => {
+        b.classList.remove('border-neutral-900', 'text-neutral-900');
+        b.classList.add('border-transparent', 'text-neutral-400');
+      });
+      button.classList.add('border-neutral-900', 'text-neutral-900');
+      button.classList.remove('border-transparent', 'text-neutral-400');
+    }
 
     const MY_EMAIL = "daniele@mychangecoach.com";
 
