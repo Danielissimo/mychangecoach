@@ -75,15 +75,36 @@
 
         <div class="md:col-span-5 bg-neutral-50 p-8 rounded-2xl border border-neutral-200">
           <div class="flex gap-2 mb-6 border-b border-neutral-200">
-            <button onclick="showAboutTab('affiliations', this)" class="about-tab-btn text-xs font-semibold tracking-widest uppercase pb-3 border-b-2 border-neutral-900 text-neutral-900">
-              Academic & Institutional Affiliations
-            </button>
-            <button onclick="showAboutTab('clients', this)" class="about-tab-btn text-xs font-semibold tracking-widest uppercase pb-3 border-b-2 border-transparent text-neutral-400 hover:text-neutral-600">
+            <button onclick="showAboutTab('clients', this)" class="about-tab-btn text-xs font-semibold tracking-widest uppercase pb-3 border-b-2 border-neutral-900 text-neutral-900">
               Clients
+            </button>
+            <button onclick="showAboutTab('affiliations', this)" class="about-tab-btn text-xs font-semibold tracking-widest uppercase pb-3 border-b-2 border-transparent text-neutral-400 hover:text-neutral-600">
+              Academic & Institutional Affiliations
             </button>
           </div>
 
-          <ul id="about-tab-affiliations" class="about-tab-panel space-y-4 text-sm font-medium text-neutral-800">
+          <div id="about-tab-clients" class="about-tab-panel">
+            <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-4 py-2">
+              <span class="text-xl font-semibold text-neutral-800">Novartis</span>
+              <span class="text-base font-medium text-neutral-600">Roche</span>
+              <span class="text-lg font-semibold text-neutral-700">Salesforce</span>
+              <span class="text-2xl font-semibold text-neutral-900">AstraZeneca</span>
+              <span class="text-base font-medium text-neutral-600">Astellas</span>
+              <span class="text-lg font-medium text-neutral-700">Axa</span>
+              <span class="text-xl font-semibold text-neutral-800">ENEL</span>
+              <span class="text-base font-medium text-neutral-600">Electrolux</span>
+              <span class="text-lg font-semibold text-neutral-700">TNT</span>
+              <span class="text-2xl font-semibold text-neutral-900">McDonald's</span>
+              <span class="text-base font-medium text-neutral-600">Portugal Telecom</span>
+              <span class="text-xl font-semibold text-neutral-800">Vodafone</span>
+              <span class="text-base font-medium text-neutral-600">AkzoNobel</span>
+              <span class="text-lg font-medium text-neutral-700">ICI Dulux</span>
+              <span class="text-base font-medium text-neutral-500">Portuguese Catholic University</span>
+              <span class="text-base font-medium text-neutral-500">The Lisbon MBA</span>
+            </div>
+          </div>
+
+          <ul id="about-tab-affiliations" class="about-tab-panel hidden space-y-4 text-sm font-medium text-neutral-800">
             <li class="flex items-center gap-3 pb-3 border-b border-neutral-200">
               <span class="w-2 h-2 rounded-full bg-neutral-900 flex-shrink-0"></span> Lecturer at Católica Lisbon School of Business & Economics
             </li>
@@ -91,33 +112,12 @@
               <span class="w-2 h-2 rounded-full bg-neutral-900 flex-shrink-0"></span> Lecturer at ISEG – Instituto Superior de Economia e Gestão
             </li>
             <li class="flex items-center gap-3 pb-3 border-b border-neutral-200">
-              <span class="w-2 h-2 rounded-full bg-neutral-900 flex-shrink-0"></span> Lecturer at ISCTE Business School / INDEG-ISCTE Executive Education
-            </li>
-            <li class="flex items-center gap-3 pb-3 border-b border-neutral-200">
               <span class="w-2 h-2 rounded-full bg-neutral-900 flex-shrink-0"></span> M.Sc. Organisational Psychology with Management, London School of Economics (LSE)
             </li>
             <li class="flex items-center gap-3">
-              <span class="w-2 h-2 rounded-full bg-neutral-900 flex-shrink-0"></span> Marie Curie Doctoral Fellow, University of Rome La Sapienza
+              <span class="w-2 h-2 rounded-full bg-neutral-900 flex-shrink-0"></span> Lecturer at ISCTE Business School / INDEG-ISCTE Executive Education, and Marie Curie Doctoral Fellow at University of Rome La Sapienza
             </li>
           </ul>
-
-          <div id="about-tab-clients" class="about-tab-panel hidden">
-            <div class="grid grid-cols-2 gap-x-4 gap-y-4 text-sm font-medium text-neutral-700">
-              <div class="pb-2 border-b border-neutral-200">Novartis</div>
-              <div class="pb-2 border-b border-neutral-200">Salesforce</div>
-              <div class="pb-2 border-b border-neutral-200">AstraZeneca</div>
-              <div class="pb-2 border-b border-neutral-200">Axa</div>
-              <div class="pb-2 border-b border-neutral-200">ENEL</div>
-              <div class="pb-2 border-b border-neutral-200">Electrolux</div>
-              <div class="pb-2 border-b border-neutral-200">TNT</div>
-              <div class="pb-2 border-b border-neutral-200">McDonald's</div>
-              <div class="pb-2 border-b border-neutral-200">Portugal Telecom</div>
-              <div class="pb-2 border-b border-neutral-200">Vodafone</div>
-              <div class="pb-2 border-b border-neutral-200">AkzoNobel</div>
-              <div class="pb-2 border-b border-neutral-200">ICI Dulux</div>
-              <div class="pb-2 col-span-2">Portuguese Catholic University / The Lisbon MBA</div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -308,9 +308,16 @@
     }
 
     function composeContactEmail() {
+      const subject = document.getElementById('contact-subject').value.trim() || "Get in touch via mychangecoach.com";
+      const message = document.getElementById('contact-message').value.trim();
       const visitorEmail = document.getElementById('visitor-email').value.trim();
-      let mailto = "mailto:" + MY_EMAIL + "?subject=" + encodeURIComponent("Get in touch via mychangecoach.com");
-      if (visitorEmail) {
+      const ccMe = document.getElementById('contact-cc-me').checked;
+
+      let mailto = "mailto:" + MY_EMAIL + "?subject=" + encodeURIComponent(subject);
+      if (message) {
+        mailto += "&body=" + encodeURIComponent(message);
+      }
+      if (ccMe && visitorEmail) {
         mailto += "&cc=" + encodeURIComponent(visitorEmail);
       }
       window.location.href = mailto;
@@ -328,16 +335,32 @@
   </script>  <!-- Contact Modal -->
   <div id="contact-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
     <div onclick="closeContactModal()" class="absolute inset-0 bg-neutral-900/50"></div>
-    <div class="relative bg-white rounded-2xl shadow-xl max-w-sm w-full p-8">
+    <div class="relative bg-white rounded-2xl shadow-xl max-w-sm w-full p-8 max-h-[90vh] overflow-y-auto">
       <button onclick="closeContactModal()" class="absolute top-4 right-4 text-neutral-400 hover:text-neutral-700">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
       <h3 class="text-lg font-semibold text-neutral-900 mb-1">Get in Touch</h3>
-      <p class="text-sm text-neutral-500 mb-5">Pop in your email and I'll open a message for you — you'll get a copy too.</p>
+      <p class="text-sm text-neutral-500 mb-5">Fill this in and I'll open a ready-to-send message in your mail app.</p>
+
+      <label class="block text-xs font-medium text-neutral-600 mb-1">Subject</label>
+      <input id="contact-subject" type="text" placeholder="What's this about?"
+        class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-sm mb-3 focus:outline-none focus:ring-2 focus:ring-neutral-900" />
+
+      <label class="block text-xs font-medium text-neutral-600 mb-1">Message</label>
+      <textarea id="contact-message" rows="4" placeholder="Your message..."
+        class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-sm mb-3 focus:outline-none focus:ring-2 focus:ring-neutral-900 resize-none"></textarea>
+
+      <label class="block text-xs font-medium text-neutral-600 mb-1">Your email</label>
       <input id="visitor-email" type="email" placeholder="your@email.com"
         class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-sm mb-3 focus:outline-none focus:ring-2 focus:ring-neutral-900" />
+
+      <label class="flex items-center gap-2 text-xs text-neutral-600 mb-5 cursor-pointer">
+        <input id="contact-cc-me" type="checkbox" class="rounded border-neutral-300" checked />
+        Send me a copy of this message
+      </label>
+
       <button onclick="composeContactEmail()" class="w-full py-2.5 bg-neutral-900 text-white rounded-lg text-sm font-medium hover:bg-neutral-800 transition-colors mb-3">
-        Open Message
+        Open Message in Mail App
       </button>
       <div class="text-center">
         <button onclick="copyMyEmail(this)" class="text-xs text-neutral-500 hover:text-neutral-800 underline">
