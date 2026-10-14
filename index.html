@@ -83,7 +83,7 @@
             Daniele dell'Erba is an international coach, change management consultant, author, and trainer. Starting his career in the London office of Accenture, he established his practice to help leaders and international organisations navigate complex behavioural, cultural, and strategic shifts.
           </p>
           <p class="text-neutral-600 leading-relaxed font-light mb-6">
-            He holds a Master's degree in Organisational Psychology from the London School of Economics (LSE) and was awarded the European Union Marie Curie Fellowship for Doctoral research in Change Management across Rome, Lisbon, and London. He works with a wide variety of corporate clients and industries across Europe and beyond.
+            He holds a Master's degree in Organisational Psychology from the London School of Economics (LSE) and was awarded the European Union Marie Curie Fellowship for Doctoral research in Change Management across Rome, Lisbon, and London. Daniele teaches in Master's and Executive Education programs at UCP – Católica Lisbon School of Business &amp; Economics and at ISEG – Lisbon School of Economics &amp; Management. He works with a wide variety of corporate clients and industries across Europe and beyond.
           </p>
         </div>
 
@@ -238,6 +238,11 @@
         <p class="text-xs text-neutral-500 font-light">Tracking organisational impact, stakeholder support, and turn-by-turn evolution.</p>
       </div>
 
+    </div>
+    <div class="text-center mt-12">
+      <a href="https://simulation.mychangecoach.com" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center px-6 py-3 bg-neutral-900 text-white rounded-full font-medium text-sm hover:bg-neutral-800 transition-colors">
+        Open the Simulation &rarr;
+      </a>
     </div>
   </section>
 
@@ -425,28 +430,61 @@
       setTimeout(() => { button.innerText = original; }, 3000);
     }
 
-    function sendContactMessage() {
+    async function sendContactMessage() {
       const subject = document.getElementById('contact-subject').value.trim();
       const message = document.getElementById('contact-message').value.trim();
       const visitorEmail = document.getElementById('visitor-email').value.trim();
       const ccMe = document.getElementById('contact-cc-me').checked;
       const status = document.getElementById('contact-status');
+      const btn = document.querySelector('#contact-modal button[onclick="sendContactMessage()"]');
+
+      function show(text) { status.textContent = text; status.classList.remove('hidden'); }
 
       if (!subject || !message || !visitorEmail) {
-        status.textContent = "Please complete the subject, message and email fields.";
-        status.classList.remove('hidden');
+        show("Please complete the subject, message and email fields.");
         return;
       }
 
-      const body = message + "\n\nReply to: " + visitorEmail;
-      const params = new URLSearchParams();
-      params.set('subject', subject);
-      params.set('body', body);
-      if (ccMe) params.set('cc', visitorEmail);
+      btn.disabled = true;
+      show("Sending...");
 
-      window.location.href = "mailto:" + MY_EMAIL + "?" + params.toString();
-      status.textContent = "Your message is ready to send. Your email app should now open with the message addressed to me.";
-      status.classList.remove('hidden');
+      try {
+        const payload = {
+          _subject: "Website message: " + subject,
+          _replyto: visitorEmail,
+          _captcha: "false",
+          _template: "table",
+          email: visitorEmail,
+          subject: subject,
+          message: message
+        };
+        if (ccMe) payload._cc = visitorEmail;
+
+        const res = await fetch("https://formsubmit.co/ajax/" + MY_EMAIL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+
+        if (res.ok && (data.success === true || data.success === "true")) {
+          show("Thank you. Your message has been sent.");
+          document.getElementById('contact-subject').value = "";
+          document.getElementById('contact-message').value = "";
+        } else {
+          throw new Error("Not sent");
+        }
+      } catch (err) {
+        // Fallback: open the visitor's email app
+        const body = message + "\n\nReply to: " + visitorEmail;
+        const params = new URLSearchParams();
+        params.set('subject', subject);
+        params.set('body', body);
+        show("We could not send it automatically. Opening your email app instead. If nothing opens, please use the copy email link below.");
+        window.location.href = "mailto:" + MY_EMAIL + "?" + params.toString();
+      } finally {
+        btn.disabled = false;
+      }
     }
   </script>  <!-- Contact Modal -->
   <div id="contact-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
@@ -456,7 +494,7 @@
         <span aria-hidden="true">&times;</span>
       </button>
       <h3 class="text-lg font-semibold text-neutral-900 mb-1">Get in Touch</h3>
-      <p class="text-sm text-neutral-500 mb-5">Use the fields below to prepare your message, then send it directly.</p>
+      <p class="text-sm text-neutral-500 mb-5">Write your message below and it will be sent straight to me.</p>
 
       <label class="block text-xs font-medium text-neutral-600 mb-1">Subject</label>
       <input id="contact-subject" type="text" placeholder="What's this about?"
