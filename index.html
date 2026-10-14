@@ -82,8 +82,14 @@
           <p class="text-neutral-600 leading-relaxed mb-4 font-light">
             Daniele dell'Erba is an international coach, change management consultant, author, and trainer. Starting his career in the London office of Accenture, he established his practice to help leaders and international organisations navigate complex behavioural, cultural, and strategic shifts.
           </p>
+          <p class="text-neutral-600 leading-relaxed font-light mb-4">
+            He holds a Master's degree in Organisational Psychology from the London School of Economics (LSE) and was awarded the European Union Marie Curie Fellowship for Doctoral research in Change Management across Rome, Lisbon, and London.
+          </p>
+          <p class="text-neutral-600 leading-relaxed font-light mb-4">
+            Daniele teaches at UCP – Católica Lisbon School of Business &amp; Economics and at ISEG – Lisbon School of Economics &amp; Management, in Master's and Executive Education programs.
+          </p>
           <p class="text-neutral-600 leading-relaxed font-light mb-6">
-            He holds a Master's degree in Organisational Psychology from the London School of Economics (LSE) and was awarded the European Union Marie Curie Fellowship for Doctoral research in Change Management across Rome, Lisbon, and London. Daniele teaches in Master's and Executive Education programs at UCP – Católica Lisbon School of Business &amp; Economics and at ISEG – Lisbon School of Economics &amp; Management. He works with a wide variety of corporate clients and industries across Europe and beyond.
+            He works with a wide variety of corporate clients and industries across Europe and beyond.
           </p>
         </div>
 
@@ -472,16 +478,10 @@
           document.getElementById('contact-subject').value = "";
           document.getElementById('contact-message').value = "";
         } else {
-          throw new Error("Not sent");
+          throw new Error((data && data.message) ? String(data.message).slice(0, 160) : "Not sent");
         }
       } catch (err) {
-        // Fallback: open the visitor's email app
-        const body = message + "\n\nReply to: " + visitorEmail;
-        const params = new URLSearchParams();
-        params.set('subject', subject);
-        params.set('body', body);
-        show("We could not send it automatically. Opening your email app instead. If nothing opens, please use the copy email link below.");
-        window.location.href = "mailto:" + MY_EMAIL + "?" + params.toString();
+        show("Sorry, your message could not be sent" + (err && err.message && err.message !== "Not sent" ? " (" + err.message + ")" : "") + ". Please try again in a moment, or copy my email address below.");
       } finally {
         btn.disabled = false;
       }
